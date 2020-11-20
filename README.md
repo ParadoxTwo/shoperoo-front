@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+sample: https://www.transcoshopping.lk/
+sample main: https://faiqmubarak009.wixsite.com/retail
+
 ## Available Scripts
 
 In the project directory, you can run:
