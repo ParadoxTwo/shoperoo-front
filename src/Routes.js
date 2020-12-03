@@ -8,6 +8,8 @@ import Admin from './Core/Admin'
 import Shop from './Core/Shop'
 import About from './Core/About'
 import Contact from './Core/Contact'
+import Footer from "./Core/Footer";
+
 
 const Routes = ()=>{
     const items = [
@@ -15,6 +17,7 @@ const Routes = ()=>{
         [Shop,'/shop'],
         [About,'/about'],
         [Contact,'/contact'],
+        [Admin, '/admin']
     ]
     return (
         <div >
@@ -23,6 +26,7 @@ const Routes = ()=>{
             <Switch>
                 {items.map((item,i)=><Route  key={i} path={item[1]} exact component={item[0]}/>)}
             </Switch>
+            <Footer/>
         </BrowserRouter>
         </div>
     )

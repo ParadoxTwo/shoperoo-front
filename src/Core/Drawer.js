@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
   },
   header:{
-    backgroundColor: '#771'
+    backgroundColor: ' #3f51b5'
   },
   content: {
     flexGrow: 1,

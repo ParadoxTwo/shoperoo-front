@@ -23,8 +23,8 @@ function ControlledCarousel(props) {
                     alt={item[0]}
                 />
                 <Carousel.Caption>
-                    <span style={{fontSize: '8vw'}}>{item[0]}</span><br/>
-                    <span style={{fontSize: '4vw'}}>{item[1]}</span>
+                    <span style={{fontSize: '8vw', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50px 0px 50px 0px'}}>{item[0]}</span><br/>
+                    <span style={{fontSize: '4vw', backgroundColor: 'rgba(0,0,0,0.6)'}}>{item[1]}</span>
                 </Carousel.Caption>
             </Carousel.Item>)}
         </Carousel>
