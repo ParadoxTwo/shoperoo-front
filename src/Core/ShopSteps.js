@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   instructions: {
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(1),
+    marginLeft: '20px'
   },
   buttons: {
     textAlign: 'center',
@@ -40,6 +41,7 @@ var details = {
   invoice: '',
   phone: '',
   address: '',
+  expectedDate: ''
 }
 const setSize = (size)=>{
   details.size = size;
@@ -77,27 +79,31 @@ const setId = (id)=>{
   details.id = id;
   console.log(id)
 }
+const setExpectedDate = (date)=>{
+  details.expectedDate = date;
+  console.log(date)
+}
 const getSaveDetails = ()=>{
   var save = {
     size: details.size,
     fname: details.fname,
-    invoice: details.invoice,
-    fileName: details.fileName,
     lname: details.lname,
     email: details.email, 
     phone: details.phone,
     address: details.address, 
+    expectedDate: details.expectedDate
   }
   return save
 }
+const getFiles = ()=>[details.invoice, details.fileName]
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
       return <Packaging setPhoneNumber={setPhoneNumber} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setFileName={setFileName} setSize={setSize}/>;
     case 1:
-      return <Invoice setPhoneNumber={setPhoneNumber} getEmail={()=>details.email} getLastName={()=>details.lname} getFirstName={()=>details.fname} getPhoneNumber={()=>details.phone} setAddress={setAddress} getSize={()=>details.size} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setInvoiceFile={setInvoiceFile} setSize={setSize}/>;
+      return <Invoice setExpectedDate={setExpectedDate} setPhoneNumber={setPhoneNumber} getEmail={()=>details.email} getLastName={()=>details.lname} getFirstName={()=>details.fname} getPhoneNumber={()=>details.phone} setAddress={setAddress} getSize={()=>details.size} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setInvoiceFile={setInvoiceFile} setSize={setSize}/>;
     case 2:
-      return <Payment setId={setId} getSaveDetails={getSaveDetails} />;
+      return <Payment setId={setId} getId={()=>details.id} getFiles={getFiles} getSaveDetails={getSaveDetails} />;
     default:
       return 'Unknown stepIndex';
   }

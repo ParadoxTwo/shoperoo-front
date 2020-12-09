@@ -1,7 +1,20 @@
-import React from "react"
+import React, {useState} from "react"
 import {Row, Col, Form, Button} from 'react-bootstrap'
-const Invoice = (props)=>
-    <div style={{padding: '20px'}}>
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import Icon from './Icon';
+// //import DatePicker from 'react-datepicker';
+// import 'react-dates/initialize'
+// import 'react-dates/lib/css/_datepicker.css'
+// import {SingleDatePicker} from 'react-dates'
+import DatePicker from 'react-date-picker';
+
+const Invoice = (props)=>{
+  const [date, showExpectedDate] = useState(new Date())
+  const setExpectedDate = (date)=>{
+    showExpectedDate(date)
+    props.setExpectedDate(date)
+  }
+  return (<div style={{padding: '20px'}}>
         <Form>
           <Form.Row>
             <Form.Group as={Col} controlId="formGridFirstName">
@@ -43,11 +56,24 @@ const Invoice = (props)=>
               <Form.Control type="address" onChange={event=>props.setAddress(event.target.value)} placeholder="Address" />
             </Form.Group>
           </Form.Row>
-            <Form.File id="formcheck-api-regular">
-              <Form.File.Label>Upload Invoice</Form.File.Label>
-              <Form.File.Input label="Upload" onChange={event=>props.setInvoiceFile(event.target.files[0])} type="file" accept=".jpg, .png, .jpeg, .pdf"/>
-            </Form.File>
+          <Row>
+            <Form.Group as={Col} controlId="formGridAddress">
+            <Form.Label>Expected date of delivery</Form.Label>
+            <br/>
+            <span style={{backgroundColor:'#1110', padding:'10px', borderWidth: '1px', borderColor: '#1116', borderStyle: 'solid', borderRadius: '5px'}}>
+              <DatePicker
+                onChange={setExpectedDate}
+                value={date}
+              />
+            </span>
+            </Form.Group>
+          </Row>
+          
+          <Form.File id="formcheck-api-regular">
+            <Form.File.Label>Upload Invoice</Form.File.Label>
+            <Form.File.Input label="Upload" onChange={event=>props.setInvoiceFile(event.target.files[0])} type="file" accept=".jpg, .png, .jpeg, .pdf"/>
+          </Form.File>
         </Form>
-    </div>
-
+    </div>)
+}
 export default Invoice;
