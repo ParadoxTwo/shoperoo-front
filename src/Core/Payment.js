@@ -51,7 +51,8 @@ export default function Payment(props){
             let details = props.getSaveDetails()
             details.invoice = urls[0]
             details.time = new Date().toUTCString()
-            details.paymentStatus = 'not paid'
+            details.paymentStatus = 'Unpaid'
+            details.fulfillment = 'Unfulfilled'
             if(urls[1]!==""&&urls[1]!==undefined)
                 details.custom = urls[1]
             console.log(details)

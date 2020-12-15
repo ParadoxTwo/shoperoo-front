@@ -37,6 +37,7 @@ var details = {
   fileName: '',
   fname: '',
   lname: '',
+  customDescription: '',
   email: '', 
   invoice: '',
   phone: '',
@@ -62,6 +63,10 @@ const setFirstName = (name)=>{
 const setAddress = (address)=>{
   details.address = address;
   console.log(address)
+}
+const setCustomDescription = (description)=>{
+  details.customDescription = description;
+  console.log(description)
 }
 const setLastName = (name)=>{
   details.lname = name;
@@ -91,7 +96,8 @@ const getSaveDetails = ()=>{
     email: details.email, 
     phone: details.phone,
     address: details.address, 
-    expectedDate: details.expectedDate
+    expectedDate: details.expectedDate,
+    customDescription: details.customDescription
   }
   return save
 }
@@ -99,7 +105,7 @@ const getFiles = ()=>[details.invoice, details.fileName]
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return <Packaging setPhoneNumber={setPhoneNumber} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setFileName={setFileName} setSize={setSize}/>;
+      return <Packaging setCustomDescription={setCustomDescription} setPhoneNumber={setPhoneNumber} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setFileName={setFileName} setSize={setSize}/>;
     case 1:
       return <Invoice setExpectedDate={setExpectedDate} setPhoneNumber={setPhoneNumber} getEmail={()=>details.email} getLastName={()=>details.lname} getFirstName={()=>details.fname} getPhoneNumber={()=>details.phone} setAddress={setAddress} getSize={()=>details.size} setEmail={setEmail} setFirstName={setFirstName} setLastName={setLastName} setInvoiceFile={setInvoiceFile} setSize={setSize}/>;
     case 2:
