@@ -7,11 +7,11 @@ import './Footer.css'
 const Footer = () => {
     const listStyle = {
         color: 'white',
-        fontSize: '1.3vw'
+        fontSize: 'medium'
     }
     const titleStyle = {
         color: 'white',
-        fontSize: '2vw'
+        fontSize: 'x-large'
     }
     return (
     <div style={{backgroundColor: ' #3f51b5'}}>
@@ -19,7 +19,7 @@ const Footer = () => {
         <Row>
           <Col md="6">
             <h5 className="title" style={titleStyle}>Footer Content</h5>
-            <p>
+            <p style={listStyle}>
               Here you can use rows and columns here to organize your footer
               content.
             </p>
@@ -41,7 +41,7 @@ const Footer = () => {
         </Row>
       </div>
       <div className="footer-copyright text-center py-3">
-        <div >
+        <div style={listStyle}>
           &copy; {new Date().getFullYear()} Copyright: <a href="#"  style={listStyle}> Shoperoo.com </a>
         </div>
       </div>

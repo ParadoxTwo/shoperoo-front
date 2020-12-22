@@ -12,7 +12,7 @@ function ControlledCarousel(props) {
         ['Step One', 'Shop For Products Online in Australia and UK.'],
         ['Step Two','At Check out provide Our Delivery Partners Address In That Country.'],
         ['Step Three','Once Received at our Warehouse, Our Staff will Pack Your Package In One of Our Standardized Boxes for Safety and Tracking Purpose.'],
-        ['Final Step','We Can Deliver It To Your Door Or You Can Pick It Up From Our Warehouse in Sri Lanka.']
+        ['Final Step','We Can Deliver Your Package To Your Door in Sri Lanka.']
     ]
     return (
         <Carousel activeIndex={index} onSelect={handleSelect} >
@@ -23,7 +23,7 @@ function ControlledCarousel(props) {
                     alt={item[0]}
                 />
                 <Carousel.Caption>
-                    <span style={{fontSize: '8vw', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '50px 0px 50px 0px'}}>{item[0]}</span><br/>
+                    <span style={{fontSize: '8vw', backgroundColor: 'rgba(0,0,0,0.6)', borderRadius: '4vw 0px 4vw 0px'}}>{item[0]}</span><br/>
                     <span style={{fontSize: '4vw', backgroundColor: 'rgba(0,0,0,0.6)'}}>{item[1]}</span>
                 </Carousel.Caption>
             </Carousel.Item>)}

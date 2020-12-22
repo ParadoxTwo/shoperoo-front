@@ -58,7 +58,7 @@ const Invoice = (props)=>{
           </Form.Row>
           <Row>
             <Form.Group as={Col} controlId="formGridAddress">
-            <Form.Label>Expected date of delivery</Form.Label>
+            <Form.Label>Expected date of arrival in warehouse</Form.Label>
             <br/>
             <span style={{backgroundColor:'#1110', padding:'10px', borderWidth: '1px', borderColor: '#1116', borderStyle: 'solid', borderRadius: '5px'}}>
               <DatePicker

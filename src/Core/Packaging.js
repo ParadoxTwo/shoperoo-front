@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom'
 import { Tab, Nav, Row, Col, Form, Button} from 'react-bootstrap'
+import Flippy, { FrontSide, BackSide } from 'react-flippy';
 // import Tabs from '@material-ui/core/Tabs';
 // import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -61,24 +62,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-var isMobile = () =>{
-  return (window.innerWidth <= 760)
-}
-
 
 export default function Packaging(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
+  const [isMobile, setMobile] = React.useState(false)
+  var mobilityCheck = () =>{
+    if (window.innerWidth <= 760){
+      setMobile(true)
+    }
+    else
+      setMobile(false)
+  }
+  React.useEffect(()=>{
+    mobilityCheck()
+  },[])
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
-    <div>
+    <div> 
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
           <Col sm={2}>
-            <Nav fill variant="tabs" className={()=>isMobile()?"flex-column":"flex-row"} style={{borderBottom: 'none'}}>
+            <Nav fill variant="tabs" className={isMobile?"flex-row":"flex-column"} style={{borderBottom: 'none'}}>
               <Nav.Item>
                 <Nav.Link style={{borderTop: 'none', color: '#000'}} eventKey="first">Preset</Nav.Link>
               </Nav.Item>
@@ -94,7 +101,7 @@ export default function Packaging(props) {
                 Once your order is received  at our warehouse, our staff will place your item in our Standardized boxes for tracking and safety purposes. <br/>
                 Our staff will inform you of the box sizes needed for your parcel.
 
-                <span style={{fontSize:'0.85vw'}}> <br/>
+                <span style={{fontSize:'x-small'}}> <br/>
                   *Price Includes door to door delivery within Colombo 1-15 <br/>
                   Outside Colombo- $7 <br/>
                   *All prices are quoted in AUD
@@ -103,7 +110,7 @@ export default function Packaging(props) {
                     <FormLabel component="legend">Select Size</FormLabel>
                     <RadioGroup row aria-label="position" name="position" defaultValue="top">
                       <Row>
-                        <Col>
+                        {/* <Col>
                           <FormControlLabel
                             value="small"
                             control={<Radio color="primary" />}
@@ -111,12 +118,30 @@ export default function Packaging(props) {
                             onChange={()=>props.setSize("small")}
                             labelPlacement="top"
                           />
-                        </Col>
+                        </Col> */}
                         <Col>
                           <FormControlLabel
                             value="medium"
                             control={<Radio color="primary" />}
-                            label={<div style={{textAlign: 'center'}}><img src='/med.png'/><br/>$12</div>}
+                            label={<div style={{textAlign: 'center'}}>
+                              <Flippy
+                                flipOnHover={!isMobile} // default false
+                                flipOnClick={isMobile} // default false
+                                flipDirection="horizontal" // horizontal or vertical
+                                // ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+                                // if you pass isFlipped prop component will be controlled component.
+                                // and other props, which will go to div
+                                style={{ width: '300px', height: '300px' }} /// these are optional style, it is not necessary
+                              >
+                                <FrontSide>
+                                  <img src='/med.png'/><br/>$12
+                                </FrontSide>
+                                <BackSide>
+                                  Dimensions of box: <br/>
+                                  39 x 28 x 14 CM. Can fit approximately 3Kg <br/>
+                                </BackSide>
+                              </Flippy>  
+                            </div>}
                             onChange={()=>props.setSize("medium")}
                             labelPlacement="top"
                           />
@@ -125,7 +150,26 @@ export default function Packaging(props) {
                           <FormControlLabel
                             value="large"
                             control={<Radio color="primary" />}
-                            label={<div style={{textAlign: 'center'}}><img src='/large.png'/><br/>$19</div>}
+                            label={<div style={{textAlign: 'center'}}>
+                              <Flippy
+                                flipOnHover={!isMobile} // default false
+                                flipOnClick={isMobile} // default false
+                                flipDirection="horizontal" // horizontal or vertical
+                                // ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+                                // if you pass isFlipped prop component will be controlled component.
+                                // and other props, which will go to div
+                                style={{ width: '300px', height: '300px' }} /// these are optional style, it is not necessary
+                              >
+                                <FrontSide>
+                                  <img src='/large.png'/><br/>$19
+                                </FrontSide>
+                                <BackSide>
+                                  Dimensions of box: <br/>
+                                  43 x 32 x 18 CM. Can fit approximately 5Kg <br/>
+                                </BackSide>
+                              </Flippy>
+                              
+                              </div>}
                             onChange={()=>props.setSize("large")}
                             labelPlacement="top"
                           />
@@ -136,8 +180,53 @@ export default function Packaging(props) {
                           <FormControlLabel
                             value="extraL"
                             control={<Radio color="primary" />}
-                            label={<div style={{textAlign: 'center'}}><img src='/extraL.png'/><br/>$28</div>}
+                            label={<div style={{textAlign: 'center'}}>
+                              <Flippy
+                                flipOnHover={!isMobile} // default false
+                                flipOnClick={isMobile} // default false
+                                flipDirection="horizontal" // horizontal or vertical
+                                // ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+                                // if you pass isFlipped prop component will be controlled component.
+                                // and other props, which will go to div
+                                style={{ width: '300px', height: '300px' }} /// these are optional style, it is not necessary
+                              >
+                                <FrontSide>
+                                  <img src='/extraL.png'/><br/>$28
+                                </FrontSide>
+                                <BackSide>
+                                  Dimensions of box: <br/>
+                                  Unknown <br/>
+                                </BackSide>
+                              </Flippy>
+                              </div>}
                             onChange={()=>props.setSize("extraL")}
+                            labelPlacement="top"
+                          />
+                        </Col>
+                        <Col>
+                          <FormControlLabel
+                            value="carton"
+                            control={<Radio color="primary" />}
+                            label={<div style={{textAlign: 'center'}}>
+                              <Flippy
+                                flipOnHover={!isMobile} // default false
+                                flipOnClick={isMobile} // default false
+                                flipDirection="horizontal" // horizontal or vertical
+                                // ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+                                // if you pass isFlipped prop component will be controlled component.
+                                // and other props, which will go to div
+                                style={{ width: '300px', height: '300px' }} /// these are optional style, it is not necessary
+                              >
+                                <FrontSide>
+                                  <img src='/carton.png'/><br/>$50
+                                </FrontSide>
+                                <BackSide>
+                                  Dimensions of box: <br/>
+                                  41 x 44 x 32 CM. Can fit roughly around 11Kg <br/>
+                                </BackSide>
+                              </Flippy>
+                              </div>}
+                            onChange={()=>props.setSize("carton")}
                             labelPlacement="top"
                           />
                         </Col>
@@ -148,27 +237,9 @@ export default function Packaging(props) {
                           and our friendly staff will top up the carton. <br/>
                           <br/>
                         </Col>
-                        <Col>
-                          <FormControlLabel
-                            value="carton"
-                            control={<Radio color="primary" />}
-                            label={<div style={{textAlign: 'center'}}><img src='/carton.png'/><br/>$50</div>}
-                            onChange={()=>props.setSize("carton")}
-                            labelPlacement="top"
-                          />
-                        </Col>
                       </Row>
                     </RadioGroup>
                   </FormControl>
-                  Dimensions of boxes: <br/>
-
-                  Small-  22 x 16x 7 CM. Can fit approximately 1Kg <br/>
-
-                  Medium- 39 x 28 x 14 CM. Can fit approximately 3Kg <br/>
-
-                  Large- 43 x 32 x 18 CM. Can fit approximately 5Kg <br/>
-
-                  Carton - 41 x 44 x 32 CM. Can fit roughly around 11Kg <br/>
               </Tab.Pane>
               <Tab.Pane eventKey="second">
                 <Form>
