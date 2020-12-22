@@ -1,7 +1,6 @@
 import React, {useState} from "react"
 import {Button, Dropdown, DropdownButton, Row, Col, Toast} from "react-bootstrap"
 import ShopSteps from './ShopSteps'
-import './toast.css'
 
 const Shop = ()=>{
   const links = {
@@ -105,10 +104,40 @@ const Shop = ()=>{
         ['Tesco', 'https://www.tesco.com/groceries/en-GB/'],
         ['Waitrose', 'https://www.waitrose.com/']
       ],
-      'Beauty & Health': [],
-      'Home           ': [],
-      'Kids           ': [],
-      'Automotive     ': []
+      'Beauty & Health': [
+        ['Bath and Body Works', 'https://www.bathandbodyshop.co.uk/'],
+        ['Body shop', 'https://www.thebodyshop.com/en-gb/'],
+        ['Boots', 'https://www.boots.com/'],
+        ['Cult Beauty', 'https://www.cultbeauty.co.uk/'],
+        ['Fragrance Direct', 'https://www.fragrancedirect.co.uk/'],
+        ['Lancome', 'https://www.lancome.co.uk/'],
+        ['Look Fantastic','https://www.lookfantastic.com/'],
+        ['Mac', 'https://www.maccosmetics.co.uk/'],
+        ['Super Drug', 'https://www.superdrug.com/']
+      ],
+      'Home           ': [
+        ['B&Q', 'https://www.diy.com/'],
+        ['Curry', 'https://www.currys.co.uk/gbuk/index.html'],
+        ['Ikea', 'https://www.ikea.com/gb/en/'],
+        ['John Lewis', 'https://www.johnlewis.com/'],
+        ['Screw Fix', 'https://www.screwfix.com/'],
+        ['Wickes', 'https://www.wickes.co.uk/']
+      ],
+      'Kids           ': [
+        ['Children Saloon', 'https://www.childrensalon.com/'],
+        ['Childrens Outlet', 'https://www.childrensoutlet.co.uk/'],
+        ['Kidly', 'https://www.kidly.co.uk/'],
+        ['Next', 'https://www.next.co.uk/'],
+        ['Smiggle', 'https://www.smiggle.co.uk/shop/en/smiggleuk'],
+        ['Very Uk', 'https://www.very.co.uk/']
+      ],
+      'Automotive     ': [
+        ['Auto Parts Pro', 'https://www.autopartspro.co.uk/'],
+        ['Autodoc', 'https://www.autodoc.co.uk/'],
+        ['Best Parts Store', 'https://www.bestpartstore.co.uk/'],
+        ['Buy Car Parts', 'https://www.buycarparts.co.uk/'],
+        ['Euro Car Parts', 'https://www.eurocarparts.com/'],
+      ]
     }
   }
   const [displayAU, setDisplayAU] = useState('none')

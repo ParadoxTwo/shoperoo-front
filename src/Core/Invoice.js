@@ -1,11 +1,5 @@
 import React, {useState} from "react"
 import {Row, Col, Form, Button} from 'react-bootstrap'
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Icon from './Icon';
-// //import DatePicker from 'react-datepicker';
-// import 'react-dates/initialize'
-// import 'react-dates/lib/css/_datepicker.css'
-// import {SingleDatePicker} from 'react-dates'
 import DatePicker from 'react-date-picker';
 
 const Invoice = (props)=>{
