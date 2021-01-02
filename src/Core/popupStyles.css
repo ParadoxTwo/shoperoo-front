@@ -12,8 +12,8 @@
   }
   .popup_inner {
     position: absolute;
-    left: 25%;
-    right: 25%;
+    left: 5%;
+    right: 5%;
     top: 10%;
     bottom: 3%;
     margin: auto;

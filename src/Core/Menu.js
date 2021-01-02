@@ -29,7 +29,7 @@ const Menu = ({history})=>{
         {isMobile()?<Drawer items={items}/>:
         <div>
             <ul className="nav navbar-custom mobile-hide" style={{fontSize: '2vw', verticalAlign: 'middle'}}>
-                <Image fluid src="logo512.png" roundedCircle style={{width: '10vw', height: '10vw', marginRight: '10vw', marginLeft: '3vw'}}/>
+                <Image class='animated rotateIn' fluid src="logo512.png" roundedCircle style={{width: '10vw', height: '10vw', marginRight: '10vw', marginLeft: '3vw'}}/>
                 {items.map((item,i)=><li key={i}  className='nav-item custom-item' style={{marginTop: 'auto', marginBottom: 'auto'}}>
                     <Link className='nav-link' style={isActive(history,item[1])} to={item[1]}>{item[0]}</Link>
                 </li>)}

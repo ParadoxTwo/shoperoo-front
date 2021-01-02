@@ -21,7 +21,8 @@ class Details extends React.Component {
                         <span class="form-control" id="deet1">{this.props.custom.fname}</span>
                         <span class="form-control" id="deet2">{this.props.custom.lname}</span>
                         <span class="form-control" id="deet3">{this.props.custom.description}</span>
-                        <img src={this.props.custom.image} id="deet4"/>
+                        <hr/>
+                        <img style={{height: '10%', width: '80%'}} src={this.props.custom.image} id="deet4"/>
                     </div>
                 </div>
                 {/* <button type="submit" class="btn btn-primary" onClick={async()=>{await this.modifyTenement(

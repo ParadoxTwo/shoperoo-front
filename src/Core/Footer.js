@@ -34,7 +34,7 @@ const Footer = () => {
                 <a style={listStyle} href="#!">Link 3</a>
               </li>
               <li className="list-unstyled">
-                <a style={listStyle} href="#!">Link 4</a>
+                <a style={listStyle} href="/admin">Admin</a>
               </li>
             </ul>
           </Col>

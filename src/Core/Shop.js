@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Button, Dropdown, DropdownButton, Row, Col, Toast} from "react-bootstrap"
 import ShopSteps from './ShopSteps'
+import './drop.css'
 
 const Shop = ()=>{
   const links = {
@@ -145,13 +146,15 @@ const Shop = ()=>{
   const [note, setNote] = useState(false)
   const [displayDefault, setDisplayDefault] = useState('block')
   const countries = ["Australia", "United Kingdom"]
+  const catagoryStyle = {
+    margin: '10px auto 10px auto'
+  }
   const closeNote = ()=>{
     setNote(false)
   }
   const showNote = ()=>{
     console.log("Showing")
     setNote(true)
-    setTimeout(closeNote, 3000)
   }
   const changeCountry = (country)=>{
     if(country==="Australia"){
@@ -172,38 +175,64 @@ const Shop = ()=>{
   }
   return(
     <div>
-      <Toast style={{zIndex: 1000, position: 'absolute'}} show={note} onClose={closeNote}>
+      <Toast style={{margin: '10px 10px 10px ',zIndex: 1000, position: 'absolute'}} show={note} onClose={closeNote}>
         <Toast.Header>
           <strong className="mr-auto">Note!</strong>
-          <small></small>
         </Toast.Header>
-        <Toast.Body>We don’t ship anything with batteries including phones, laptops etc.</Toast.Body>
+        <Toast.Body>
+          We don’t ship anything with batteries including phones, laptops etc.
+          <br/>
+          <br/>
+          <Button style={{marginLeft:'70%'}} onClick={closeNote}>Okay</Button>
+        </Toast.Body>
       </Toast>
       <section id='shops' style={{backgroundImage:'url(default2.jpg)', backgroundSize: 'cover', padding: '6vw', textAlign:'center', display: displayDefault}}>
-      <DropdownButton title={<div style={{width: '120px'}}>Select a country</div>} style={{padding:'2vw', marginLeft: 'auto', marginRight: 'auto'}}>
+      <DropdownButton title="Select a country" style={{marginBottom:'20px', width: '200px', marginLeft: 'auto', marginRight: 'auto'}}>
         {countries.map((country, i)=><Dropdown.Item key={i} onSelect={()=>{ console.log(country); changeCountry(country)}}>{country}</Dropdown.Item>)}
       </DropdownButton>
       </section>
       <section id='au-shops' style={{backgroundImage:`url(australia_shop.jpg)`, padding: '6vw', display: displayAU}}>
-        <DropdownButton title={<div style={{width: '120px'}}>Select a country</div>} style={{padding:'2vw'}}>
+        <DropdownButton title="Select a country" style={{marginBottom:'20px', width: '200px'}}>
           {countries.map((country, i)=><Dropdown.Item key={i} onSelect={()=>{ console.log(country); changeCountry(country)}}>{country}</Dropdown.Item>)}
         </DropdownButton>
         <h2 style={{color:'white', marginBottom: '2vw'}}>Australia</h2>
         <Row>
-          {links.catagories1.map((catagory, i)=><Col onClick={catagory==='Electronics    '?showNote:null}>
-            <DropdownButton title={<div onClick={catagory==='Electronics    '?showNote:null} style={{width: '120px'}} onClick={catagory==='Electronics    '?showNote:null}>{catagory}</div>} style={{padding:'2vw'}}>
-              {links.au[catagory].map((value,i)=><Dropdown.Item href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</Dropdown.Item>)}
-            </DropdownButton>
-          </Col>)}
+          {links.catagories1.map((catagory, i)=>
+            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+              <button 
+                class="btn btn-primary dropdown-toggle mr-4" 
+                type="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+                style={{width: '200px', height: '50px'}}
+              >
+                {catagory}
+              </button>
+              <ul class="dropdown-menu" style={{width: '200px'}} >
+                {links.au[catagory].map((value,i)=><a class="dropdown-item" href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</a>)}
+              </ul>
+            </div>)}
         </Row>
         <Row>
-        {links.catagories2.map((catagory, i)=><Col>
-            <DropdownButton title={<div style={{width: '120px'}}>{catagory}</div>} style={{padding:'2vw'}}>
-              {links.au[catagory].map((value,i)=><Dropdown.Item href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</Dropdown.Item>)}
-            </DropdownButton>
-          </Col>)}
+        {links.catagories2.map((catagory, i)=>
+            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+              <button 
+                class="btn btn-primary dropdown-toggle mr-4" 
+                type="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+                style={{width: '200px', height: '50px'}}
+              >
+                {catagory}
+              </button>
+              <ul class="dropdown-menu" style={{width: '200px', maxHeight: '200px'}} >
+                {links.au[catagory].map((value,i)=><a class="dropdown-item" href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</a>)}
+              </ul>
+            </div>)}
         </Row>
-        <Row style={{color: 'white'}}>
+        <Row style={{color: 'white', marginTop: '20px'}}>
           <Col>
             <h2>
               Delivery Address
@@ -211,32 +240,51 @@ const Shop = ()=>{
             <h3>
               Melbourne: 
             </h3>
-            <h3>
-              Sydney: 
-            </h3>
           </Col>
         </Row>
       </section>
       <section id='uk-shops' style={{backgroundImage:`url(UK_shop.jpg)`, padding: '6vw', display: displayUK}}>
-        <DropdownButton title={<div style={{ width: '120px'}}>Select a country</div>} style={{ padding:'2vw'}}>
+        <DropdownButton title="Select a country" style={{marginBottom:'20px', width: '200px'}}>
           {countries.map((country, i)=><Dropdown.Item key={i} onSelect={()=>{ console.log(country); changeCountry(country)}}>{country}</Dropdown.Item>)}
         </DropdownButton>
         <h2 style={{color:'white', marginBottom: '2vw'}}>United Kingdom</h2>
         <Row>
-          {links.catagories1.map((catagory, i)=><Col>
-            <DropdownButton title={<div style={{width: '120px'}}>{catagory}</div>} style={{padding:'2vw'}}>
-              {links.uk[catagory].map((value,i)=><Dropdown.Item href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</Dropdown.Item>)}
-            </DropdownButton>
-          </Col>)}
+          {links.catagories1.map((catagory, i)=>
+            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+              <button 
+                class="btn btn-primary dropdown-toggle mr-4" 
+                type="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+                style={{width: '200px', height: '50px'}}
+              >
+                {catagory}
+              </button>
+              <ul class="dropdown-menu" style={{width: '200px', maxHeight: '200px'}} >
+                {links.uk[catagory].map((value,i)=><a class="dropdown-item" href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</a>)}
+              </ul>
+            </div>)}
         </Row>
         <Row>
-        {links.catagories2.map((catagory, i)=><Col>
-            <DropdownButton title={<div style={{width: '120px'}}>{catagory}</div>} style={{padding:'2vw'}}>
-              {links.uk[catagory].map((value,i)=><Dropdown.Item href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</Dropdown.Item>)}
-            </DropdownButton>
-          </Col>)}
+        {links.catagories2.map((catagory, i)=>
+            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+              <button 
+                class="btn btn-primary dropdown-toggle mr-4" 
+                type="button" 
+                data-toggle="dropdown" 
+                aria-haspopup="true" 
+                aria-expanded="false"
+                style={{width: '200px', height: '50px'}}
+              >
+                {catagory}
+              </button>
+              <ul class="dropdown-menu" style={{width: '200px', maxHeight: '200px'}} >
+                {links.uk[catagory].map((value,i)=><a class="dropdown-item" href={value[1]} target="_blank" rel="noopener noreferrer" >{value[0]}</a>)}
+              </ul>
+            </div>)}
         </Row>
-        <Row style={{color: 'white'}}>
+        <Row style={{color: 'white', marginTop: '20px'}}>
           <Col>
             <h2>
               Delivery Address

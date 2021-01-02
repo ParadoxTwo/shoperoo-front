@@ -41,7 +41,7 @@ var isActive = (history, path)=>{
       return {color: '#000000'}
   }
   else{
-      return {color: '#cccc'}
+      return {color: '#7777'}
   }
 }
 const useStyles = makeStyles((theme) => ({
@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    backgroundColor: ' #3f51b5'
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -61,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -74,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: ' rgba(200,220,255,0.95)'
   },
   drawerHeader: {
     display: 'flex',
@@ -137,7 +140,7 @@ function PersistentDrawerLeft({items, history}) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Shoperoo
+            Zapper Global
           </Typography>
         </Toolbar>
       </AppBar>

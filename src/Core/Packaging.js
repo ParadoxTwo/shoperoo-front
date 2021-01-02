@@ -80,6 +80,9 @@ export default function Packaging(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const boxOption = {
+    display: 'inline-block'
+  }
   return (
     <div> 
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
@@ -119,7 +122,7 @@ export default function Packaging(props) {
                             labelPlacement="top"
                           />
                         </Col> */}
-                        <Col>
+                        <div style={boxOption}>
                           <FormControlLabel
                             value="medium"
                             control={<Radio color="primary" />}
@@ -145,8 +148,8 @@ export default function Packaging(props) {
                             onChange={()=>props.setSize("medium")}
                             labelPlacement="top"
                           />
-                        </Col>
-                        <Col>
+                        </div>
+                        <div style={boxOption}>
                           <FormControlLabel
                             value="large"
                             control={<Radio color="primary" />}
@@ -173,10 +176,10 @@ export default function Packaging(props) {
                             onChange={()=>props.setSize("large")}
                             labelPlacement="top"
                           />
-                        </Col>
+                        </div>
                       </Row>
                       <Row>
-                        <Col>
+                        <div style={boxOption}>
                           <FormControlLabel
                             value="extraL"
                             control={<Radio color="primary" />}
@@ -202,8 +205,8 @@ export default function Packaging(props) {
                             onChange={()=>props.setSize("extraL")}
                             labelPlacement="top"
                           />
-                        </Col>
-                        <Col>
+                        </div>
+                        <div style={boxOption}>
                           <FormControlLabel
                             value="carton"
                             control={<Radio color="primary" />}
@@ -229,14 +232,14 @@ export default function Packaging(props) {
                             onChange={()=>props.setSize("carton")}
                             labelPlacement="top"
                           />
-                        </Col>
-                        <Col>
+                        </div>
+                        <div style={boxOption}>
                           <br/>
                           *If you're purchasing groceries. <br/>
                           We advice you purchase a carton from us <br/>
                           and our friendly staff will top up the carton. <br/>
                           <br/>
-                        </Col>
+                        </div>
                       </Row>
                     </RadioGroup>
                   </FormControl>

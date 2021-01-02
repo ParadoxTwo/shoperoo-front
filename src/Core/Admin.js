@@ -6,6 +6,8 @@ import Details from './Details'
 
 export default function Admin(){
   const [customers, setCustomers] = useState([])
+  const [unlocked, unlock] = useState(false)
+  const [passcode, setPasscode] = useState('')
   const [loading, setLoading] = useState(false)
   const [showCustomDetails, toggleCustomDetails] = useState(false)
   const [customDetails, setCustomDetails] = useState({fname:'', lname:'', description:'',image:''})
@@ -22,6 +24,7 @@ export default function Admin(){
 
   function getOrders(){
     setLoading(true)
+    unlock(false)
     ref.onSnapshot((querySnapshot)=>{
       var items = []
       querySnapshot.forEach((doc)=>{
@@ -36,6 +39,15 @@ export default function Admin(){
   // const returner=(setVal)=>{
   //   refresh = setVal
   // }
+  const handlePasscodeChange = e=>{
+    e.preventDefault();
+    setPasscode(e.target.value)
+  }
+  const authenticate = ()=>{
+    if(passcode ==='slkjqwgenkabs!enkj@NDKJcaksjbdk'){
+      unlock(true)
+    }
+  }
   useEffect(()=>{
     getOrders()
   },[])
@@ -43,7 +55,13 @@ export default function Admin(){
   return (
   <div>
     Admin section <br/>
-    {loading?"Loading":
+    {!unlocked?<div>
+      <form>
+        <input type='password' onChange={handlePasscodeChange}></input> <br/>
+        <button class='btn' onClick={authenticate}>Unlock</button>
+      </form>
+    </div>:null}
+    {loading?"Loading":unlocked?
     <div>
       {/* {showCustomDetails?<CustomPackaging returner={returner} toggleCustomDetails={toggleCustomDetails} getCustomDetails = {getCustomDetails}/>:null} */}
       <Details popup={showCustomDetails} custom={customDetails} closePopup = {()=>toggleCustomDetails(false)}/>
@@ -86,7 +104,7 @@ export default function Admin(){
     </Accordion>
 
     </div>
-    }
+    :null}
     
   </div>
   )
