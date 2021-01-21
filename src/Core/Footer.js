@@ -14,7 +14,7 @@ const Footer = () => {
         fontSize: 'x-large'
     }
     return (
-    <div style={{backgroundColor: ' #3f51b5'}}>
+    <div style={{backgroundColor: ' #3f51b5', width: '100%'}}>
       <div className="text-center text-md-left" style={{padding: '1vw'}}>
         <Row>
           <Col md="6">

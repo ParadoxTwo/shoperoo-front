@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import {Button, Dropdown, DropdownButton, Row, Col, Toast} from "react-bootstrap"
 import ShopSteps from './ShopSteps'
+import Track from './Track.js'
 import './drop.css'
 
 const Shop = ()=>{
@@ -175,17 +176,20 @@ const Shop = ()=>{
   }
   return(
     <div>
-      <Toast style={{margin: '10px 10px 10px ',zIndex: 1000, position: 'absolute'}} show={note} onClose={closeNote}>
-        <Toast.Header>
-          <strong className="mr-auto">Note!</strong>
-        </Toast.Header>
-        <Toast.Body>
-          We don’t ship anything with batteries including phones, laptops etc.
-          <br/>
-          <br/>
-          <Button style={{marginLeft:'70%'}} onClick={closeNote}>Okay</Button>
-        </Toast.Body>
-      </Toast>
+      <section >
+        <Toast show={note} style={{margin: '10px auto 10px auto',zIndex: 1000, position: 'absolute', left:'0', right:'0'}} onClose={closeNote}>
+          <Toast.Header>
+            <strong className="mr-auto">Note!</strong>
+          </Toast.Header>
+          <Toast.Body>
+            We don’t ship anything with batteries including phones, laptops etc.
+            <br/>
+            <br/>
+            <Button style={{marginLeft:'70%'}} onClick={closeNote}>Okay</Button>
+          </Toast.Body>
+        </Toast>
+      </section>
+      
       <section id='shops' style={{backgroundImage:'url(default2.jpg)', backgroundSize: 'cover', padding: '6vw', textAlign:'center', display: displayDefault}}>
       <DropdownButton title="Select a country" style={{marginBottom:'20px', width: '200px', marginLeft: 'auto', marginRight: 'auto'}}>
         {countries.map((country, i)=><Dropdown.Item key={i} onSelect={()=>{ console.log(country); changeCountry(country)}}>{country}</Dropdown.Item>)}
@@ -297,6 +301,9 @@ const Shop = ()=>{
       </section>
       <section>
         <ShopSteps/>
+      </section>
+      <section>
+        <Track/>
       </section>
     </div>)
 }
