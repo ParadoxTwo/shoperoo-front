@@ -177,7 +177,7 @@ const Shop = ()=>{
   return(
     <div>
       <section >
-        <Toast show={note} style={{margin: '10px auto 10px auto',zIndex: 1000, position: 'absolute', left:'0', right:'0'}} onClose={closeNote}>
+        <Toast show={note} style={{margin: '10px auto 10px auto',zIndex: 2147483647, position: 'absolute', left:'0', right:'0'}} onClose={closeNote}>
           <Toast.Header>
             <strong className="mr-auto">Note!</strong>
           </Toast.Header>
@@ -202,7 +202,7 @@ const Shop = ()=>{
         <h2 style={{color:'white', marginBottom: '2vw'}}>Australia</h2>
         <Row>
           {links.catagories1.map((catagory, i)=>
-            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+            <div class="btn-group dropdown" style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
               <button 
                 class="btn btn-primary dropdown-toggle mr-4" 
                 type="button" 
@@ -220,7 +220,7 @@ const Shop = ()=>{
         </Row>
         <Row>
         {links.catagories2.map((catagory, i)=>
-            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+            <div class="btn-group dropdown" style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
               <button 
                 class="btn btn-primary dropdown-toggle mr-4" 
                 type="button" 
@@ -254,7 +254,7 @@ const Shop = ()=>{
         <h2 style={{color:'white', marginBottom: '2vw'}}>United Kingdom</h2>
         <Row>
           {links.catagories1.map((catagory, i)=>
-            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+            <div class="btn-group dropdown" style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
               <button 
                 class="btn btn-primary dropdown-toggle mr-4" 
                 type="button" 
@@ -272,7 +272,7 @@ const Shop = ()=>{
         </Row>
         <Row>
         {links.catagories2.map((catagory, i)=>
-            <div style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
+            <div class="btn-group dropdown" style={catagoryStyle} onClick={catagory==='Electronics    '?showNote:()=>console.log("click")}>
               <button 
                 class="btn btn-primary dropdown-toggle mr-4" 
                 type="button" 
