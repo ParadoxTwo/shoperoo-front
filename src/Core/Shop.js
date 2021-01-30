@@ -302,9 +302,6 @@ const Shop = ()=>{
       <section>
         <ShopSteps/>
       </section>
-      <section>
-        <Track/>
-      </section>
     </div>)
 }
 export default Shop;

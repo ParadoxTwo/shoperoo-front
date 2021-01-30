@@ -9,12 +9,14 @@ import Shop from './Core/Shop'
 import About from './Core/About'
 import Contact from './Core/Contact'
 import Footer from "./Core/Footer";
+import Track from './Core/Track';
 
 
 const Routes = ()=>{
     const items = [
         [Home,'/'],
         [Shop,'/shop'],
+        [Track, '/track'],
         [About,'/about'],
         [Contact,'/contact'],
         [Admin, '/admin']

@@ -9,7 +9,7 @@ const About = ()=>{
       <div>
         <Row style={{height: 'auto'}}>
           <Col className="center" md="6" style={{width: '100%', height: '500px', backgroundSize: 'cover', backgroundImage: `url('delivery.jpg')`, textAlign: 'center'}}>
-            <h1 style={{marginTop:'30%'}} class='neon'>What we do?</h1>
+            <h1 style={{fontSize: '72px',marginTop:'30%'}} class='neon'>What we do?</h1>
           </Col>
           <Col className="center" md="6" style={{width: '100%', backgroundColor: 'black', color: 'white', padding: '10px 20px 10px 20px'}}>
             <h4 style={{marginTop:'22%', marginBottom: '22%'}}>Fast and friendly, we offer professional transportation services throughout Sri Lanka. A subsidiary of Laksiri Seva who have been providing logistics solutions for more than 30 years. We are committed to provide the highest quality of service at a the most competitive price. 

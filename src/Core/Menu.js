@@ -21,6 +21,7 @@ const Menu = ({history})=>{
     const items = [
         ['Home','/'],
         ['Shop','/shop'],
+        ['Track','/track'],
         ['About','/about'],
         ['Contact','/contact']
     ]
