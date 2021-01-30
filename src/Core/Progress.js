@@ -26,24 +26,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Select campaign settings', 'Create an ad group', 'Dispatched'];
+  return ['Receiving parcel', 'Shipping', 'Arrived at warehouse', 'Dispatched']
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`;
+      return `We're waiting for your order to arrive at our warehouse.`;
     case 1:
-      return 'An ad group contains one or more ads which target a shared set of keywords.';
+      return `We've received your parcel which is now being shipped to Sri Lanka.`;
     case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
+      return `Your parcel has been shipped to our warehouse in Sri Lanka and will be dispatched soon.`;
+    case 3:
+      return `Your parcel has been dispatched to your delivery address and will be delivered at your door.`;
     default:
-      return 'Unknown step';
+      return 'Unknown';
   }
 }
 
@@ -77,7 +74,7 @@ export default function Progress({handleTrack, current}) {
       </Stepper>
       {activeStep === steps.length && (
         <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - your order is dispatched and will be delivered to your door soon!</Typography>
+          <Typography>All steps completed - your order has been delivered!</Typography>
         </Paper>
       )}
       <button onClick={handleTrackButton} class="btn btn-primary btn-md">Track</button>

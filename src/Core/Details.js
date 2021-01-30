@@ -1,4 +1,5 @@
 import React from 'react';
+import {Image} from 'react-bootstrap'
 import './popupStyles.css';
 
 class Details extends React.Component {
@@ -22,7 +23,9 @@ class Details extends React.Component {
                         <span class="form-control" id="deet2">{this.props.custom.lname}</span>
                         <span class="form-control" id="deet3">{this.props.custom.description}</span>
                         <hr/>
-                        <img style={{height: '10%', width: '80%'}} src={this.props.custom.image} id="deet4"/>
+                        <div style={{textAlign: 'center', height: '360px', width: '500px'}}>
+                          <a href={this.props.custom.image} target="_blank" rel="noopener noreferrer"><Image style={{height: '100%', width: '100%'}} src={this.props.custom.image} id="deet4"/></a>
+                        </div>
                     </div>
                 </div>
                 {/* <button type="submit" class="btn btn-primary" onClick={async()=>{await this.modifyTenement(

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {Row, Col, Form, Button} from 'react-bootstrap'
 import DatePicker from 'react-date-picker';
 
@@ -8,6 +8,9 @@ const Invoice = (props)=>{
     showExpectedDate(date)
     props.setExpectedDate(date)
   }
+  useEffect(()=>{
+    setExpectedDate(new Date())
+  },[])
   return (<div style={{padding: '20px'}}>
         <Form>
           <Form.Row>

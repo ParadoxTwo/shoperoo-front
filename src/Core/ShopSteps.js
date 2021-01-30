@@ -42,7 +42,9 @@ var details = {
   invoice: '',
   phone: '',
   address: '',
-  expectedDate: ''
+  expectedDate: '',
+  shipmentStatus: 'Receiving parcel',
+  fulfilment: 'Unfulfilled'
 }
 const setSize = (size)=>{
   details.size = size;
@@ -97,7 +99,9 @@ const getSaveDetails = ()=>{
     phone: details.phone,
     address: details.address, 
     expectedDate: details.expectedDate,
-    customDescription: details.customDescription
+    customDescription: details.customDescription,
+    shipmentStatus: details.shipmentStatus,
+    fulfillment: details.fulfilment
   }
   return save
 }

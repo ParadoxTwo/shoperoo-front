@@ -249,29 +249,29 @@ export default function Packaging(props) {
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridFirstName">
                       <Form.Label>First Name</Form.Label>
-                      <Form.Control type="text" placeholder="Enter first name" />
+                      <Form.Control onChange={e=>props.setFirstName(e.target.value)} type="text" placeholder="Enter first name" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridLastName">
                       <Form.Label>Last Name</Form.Label>
-                      <Form.Control type="text" placeholder="Enter last name" />
+                      <Form.Control onChange={e=>props.setLastName(e.target.value)} type="text" placeholder="Enter last name" />
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>Email</Form.Label>
-                      <Form.Control type="email" placeholder="Enter email" />
+                      <Form.Control onChange={e=>props.setEmail(e.target.value)} type="email" placeholder="Enter email" />
                     </Form.Group>
 
                     <Form.Group as={Col} controlId="formGridPhoneNumber">
                       <Form.Label>Phone Number</Form.Label>
-                      <Form.Control type="number" placeholder="Phone number" />
+                      <Form.Control onChange={e=>props.setPhoneNumber(e.target.value)} type="number" placeholder="Phone number" />
                     </Form.Group>
                   </Form.Row>
 
                     <Form.Group controlId="formGridDescription">
                       <Form.Label>Description</Form.Label>
-                      <Form.Control type="text" placeholder="Enter description of goods" />
+                      <Form.Control onChange={e=>props.setCustomDescription(e.target.value)} type="text" placeholder="Enter description of goods" />
                     </Form.Group>
 
                     <Form.File id="formcheck-api-regular">
