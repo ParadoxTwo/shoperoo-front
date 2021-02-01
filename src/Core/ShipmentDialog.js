@@ -13,11 +13,21 @@ export default function ShipmentDialog(props) {
   const handleListItemClick = (value) => {
     onClose(value);
   };
-
+  const translate = (value)=>{
+    switch(value){
+      case 'Received Parcel': return 0
+      case 'Shipped': return 1
+      case 'Arrived at warehouse': return 2
+      case 'Dispatched': return 3
+      default: return -1
+    }
+  }
   return (
-    <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={open}>
-      <DialogTitle id="simple-dialog-title">Set backup account</DialogTitle>
-      <ShipmentSlider defaultValue={props.shipmentStatus}/>
+    <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
+      <DialogTitle id="simple-dialog-title">Set shipment status</DialogTitle>
+      <div style={{ textAlign: 'center', padding: '120px 90px 120px 90px'}}>
+        <ShipmentSlider id={props.id} defaultValue={translate(props.shipmentStatus)}/>
+      </div>
     </Dialog>
   );
 }

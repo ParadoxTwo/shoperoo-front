@@ -3,13 +3,16 @@ import firebase from '../firebase'
 import {Table, Card, Accordion, Button} from 'react-bootstrap'
 import CustomPackaging from './CustomPackaging'
 import Details from './Details'
-import { ContactSupportOutlined } from "@material-ui/icons"
+import ShipmentDialog from './ShipmentDialog'
 
 export default function Admin(){
   const [customers, setCustomers] = useState([])
   const [unlocked, unlock] = useState(false)
   const [passcode, setPasscode] = useState('')
   const [loading, setLoading] = useState(false)
+  const [showDialog, setShowDialog] = useState(false)
+  const [selectedID, setSelectedID] = useState('')
+  const [selectedStatus, setSelectedStatus] = useState('')
   const [fulfilmentChange, makeFulfilmentChange] = useState(false)
   const [showCustomDetails, toggleCustomDetails] = useState(false)
   const [customDetails, setCustomDetails] = useState({fname:'', lname:'', description:'',image:''})
@@ -21,6 +24,26 @@ export default function Admin(){
     console.log(customDetails)
     toggleCustomDetails(true)
   }
+
+
+  const openDialog = ()=>{
+    setShowDialog(true)
+  }
+  const closeDialog = ()=>{
+    setShowDialog(false)
+    setSelectedID('')
+    setSelectedStatus('')
+  }
+  useEffect(()=>{
+    console.log("sad"+selectedStatus+selectedID)
+  },[selectedID])
+  const handleChangeShipmentStatus = (id, status)=>{
+    setSelectedStatus(status)
+    setSelectedID(id)
+    console.log(selectedID+selectedStatus)
+    openDialog()
+  }
+
 
   const ref = firebase.firestore().collection("customers")
   function handleFulfilmentToggle(fulfilment, id){
@@ -87,6 +110,7 @@ export default function Admin(){
     <div>
       {/* {showCustomDetails?<CustomPackaging returner={returner} toggleCustomDetails={toggleCustomDetails} getCustomDetails = {getCustomDetails}/>:null} */}
       <Details popup={showCustomDetails} custom={customDetails} closePopup = {()=>toggleCustomDetails(false)}/>
+      <ShipmentDialog id={selectedID} shipmentStatus={selectedStatus} open={showDialog} onClose={closeDialog} />
       <Accordion defaultActiveKey="0">
         <Card>
           <Card.Header>
@@ -118,9 +142,13 @@ export default function Admin(){
                   <td>{customer.expectedDate?customer.expectedDate:null}</td>
                   <td><a style={{textDecoration: 'underline'}} href={customer.invoice?customer.invoice:null} target="_blank" rel="noopener noreferrer">Open</a></td>
                   <td>{customer.paymentStatus?customer.paymentStatus:null}</td>
-                  <td><Button className={customer.fulfilment=='Fulfilled'?"btn-success":"btn-danger"} onClick={()=>{handleFulfilmentToggle(customer.fulfilment,customer.id)}}>{customer.fulfilment?customer.fulfilment:null}</Button></td>
+                  <td style={{textAlign: 'center'}}><Button className={customer.fulfilment=='Fulfilled'?"btn-success":"btn-danger"} onClick={()=>{handleFulfilmentToggle(customer.fulfilment,customer.id)}}>{customer.fulfilment?customer.fulfilment:null}</Button></td>
                   <td>{customer.time?customer.time:null}</td>
-                  <td><Button>{customer.shipmentStatus?customer.shipmentStatus:null}</Button></td>
+                  <td style={{textAlign: 'center'}}>
+                    <Button onClick={()=>handleChangeShipmentStatus(customer.id, customer.shipmentStatus)}>
+                      {customer.shipmentStatus?customer.shipmentStatus:null}
+                    </Button>
+                  </td>
                 </tr>)
                 }</tbody>
               </Table>
