@@ -6,28 +6,32 @@ import firebase from '../firebase'
 
 const useStyles = makeStyles({
   PC: {
-    width: 400,
+    width: 500,
   },
   Mobile: {
-    height: 400
+    height: 500
   }
 });
 
 const marks = [
   {
     value: 0,
-    label: 'Received Parcel',
+    label: 'Awaiting Parcel',
   },
   {
     value: 1,
-    label: 'Shipped',
+    label: 'Received Parcel',
   },
   {
     value: 2,
-    label: 'Arrived at warehouse',
+    label: 'Shipped',
   },
   {
     value: 3,
+    label: 'Arrived at warehouse',
+  },
+  {
+    value: 4,
     label: 'Dispatched',
   },
 ];
@@ -45,10 +49,11 @@ export default function ShipmentSlider({id, defaultValue, setValue}) {
 
   const translate = (value)=>{
     switch(value){
-      case 0: return 'Received Parcel'
-      case 1: return 'Shipped'
-      case 2: return 'Arrived at warehouse'
-      case 3: return 'Dispatched'
+      case 0: return 'Awaiting Parcel'
+      case 1: return 'Received Parcel'
+      case 2: return 'Shipped'
+      case 3: return 'Arrived at warehouse'
+      case 4: return 'Dispatched'
       default: return 'Unknown'
     }
   }
@@ -73,8 +78,9 @@ export default function ShipmentSlider({id, defaultValue, setValue}) {
   return (
     <div className={isMobile?classes.Mobile:classes.PC}>
       <Typography id="discrete-slider-restrict" gutterBottom>
-        Set Shipment Status
+        Select the current parcel status:
       </Typography>
+      <br/>
       <Slider
         defaultValue={defaultValue}
         valueLabelFormat={valueLabelFormat}
@@ -82,12 +88,13 @@ export default function ShipmentSlider({id, defaultValue, setValue}) {
         aria-labelledby="discrete-slider-restrict"
         step={null}
         min={0}
-        max={3}
+        max={4}
         valueLabelDisplay="auto"
         marks={marks}
         onChange={handleSliderChange}
         orientation={isMobile?'vertical':'horizontal'}
       />
+      <br/>
     </div>
   );
 }

@@ -43,7 +43,7 @@ var details = {
   phone: '',
   address: '',
   expectedDate: '',
-  shipmentStatus: 'Receiving parcel',
+  shipmentStatus: 'Awaiting Parcel',
   fulfilment: 'Unfulfilled'
 }
 const setSize = (size)=>{

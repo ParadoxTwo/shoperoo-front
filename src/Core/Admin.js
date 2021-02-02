@@ -98,8 +98,7 @@ export default function Admin(){
   return (
   <div>
     <br/>
-    <h1>Admininstrator Panel</h1>
-    <br/>
+    <h1 style={{padding: '30px'}}>Admininstrator's Panel</h1>
     {!unlocked?<div>
       <form>
         <input type='password' onChange={handlePasscodeChange}></input> <br/>

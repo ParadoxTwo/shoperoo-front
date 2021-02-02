@@ -15,17 +15,18 @@ export default function ShipmentDialog(props) {
   };
   const translate = (value)=>{
     switch(value){
-      case 'Received Parcel': return 0
-      case 'Shipped': return 1
-      case 'Arrived at warehouse': return 2
-      case 'Dispatched': return 3
+      case 'Awaiting Parcel': return 0
+      case 'Received Parcel': return 1
+      case 'Shipped': return 2
+      case 'Arrived at warehouse': return 3
+      case 'Dispatched': return 4
       default: return -1
     }
   }
   return (
     <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
       <DialogTitle id="simple-dialog-title">Set shipment status</DialogTitle>
-      <div style={{ textAlign: 'center', padding: '120px 90px 120px 90px'}}>
+      <div style={{ textAlign: 'center',  marginRight: '60px', marginLeft: '60px', marginTop: '20px', marginBottom: '20px'}}>
         <ShipmentSlider id={props.id} defaultValue={translate(props.shipmentStatus)}/>
       </div>
     </Dialog>

@@ -26,18 +26,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Received Parcel', 'Shipped', 'Arrived at warehouse', 'Dispatched']
+  return ['Awaiting Parcel', 'Received Parcel', 'Shipped', 'Arrived at warehouse', 'Dispatched']
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `We've received your parcel which will be shipped soon.`;
+      return `We're waiting for your parcel to be delivered at our international warehouse.`;
     case 1:
-      return `Your parcel has been shipped to Sri Lanka.`;
+      return `We've received your parcel which will be shipped soon.`;
     case 2:
-      return `Your parcel has arrived at our warehouse and will be dispatched soon.`;
+      return `Your parcel has been shipped to Sri Lanka.`;
     case 3:
+      return `Your parcel has arrived at our warehouse and will be dispatched soon.`;
+    case 4:
       return `Your parcel has been dispatched to your delivery address and will be delivered at your door.`;
     default:
       return 'Unknown';

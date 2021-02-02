@@ -16,10 +16,11 @@ import Progress from './Progress'
                     console.log("Document data:", doc.data());
                     console.log(document.shipmentStatus)
                     switch(document.shipmentStatus){
-                        case 'Received Parcel': status = 0; break;
-                        case 'Shipped':  status = 1; break;
-                        case 'Arrived at warehouse': status = 2; break;
-                        case 'Dispatched': status = 3; break;
+                        case 'Awaiting Parcel': status = 0; break;
+                        case 'Received Parcel': status = 1; break;
+                        case 'Shipped':  status = 2; break;
+                        case 'Arrived at warehouse': status = 3; break;
+                        case 'Dispatched': status = 4; break;
                         default: status = -1; break;
                     }
                     console.log(status)
